@@ -41,6 +41,10 @@ Xóa và tạo lại cache
 
     php artisan config:clear
     php artisan config:cache
+    
+Tạo symbolic link giữa storage và public
+
+    php artisan storage:link
 
 Chạy Miragte tạo DB
 
