@@ -9,13 +9,20 @@ do
 done
 echo "Database MySQL đã sẵn sàng!"
 
+# Sửa quyền thư mục storage và bootstrap/cache (nếu cần)
+echo "Sửa quyền truy cập cho thư mục storage và bootstrap/cache..."
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
 # Kiểm tra xem APP_KEY đã tồn tại chưa
-if grep -q "APP_KEY=" .env; then
-  echo "APP_KEY đã tồn tại!"
-else
-  echo "APP_KEY chưa tồn tại. Đang tạo APP_KEY mới..."
-  php artisan key:generate --ansi
-fi
+
+echo "Đang tạo APP_KEY mới..."
+php artisan key:generate --ansi
+
+# Xóa cache config và tạo cache config mới
+echo "Đang xóa cache config và tạo cache config mới..."
+php artisan config:clear
+php artisan config:cache
 
 # Tạo symbolic link cho storage nếu chưa có
 if [ ! -L "public/storage" ]; then
