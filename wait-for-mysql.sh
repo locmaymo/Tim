@@ -9,12 +9,20 @@ do
 done
 echo "Database MySQL đã sẵn sàng!"
 
-# Kiểm tra xem APP_KEY đã được tạo chưa
+# Kiểm tra xem APP_KEY đã tồn tại chưa
 if grep -q "APP_KEY=" .env; then
   echo "APP_KEY đã tồn tại!"
 else
   echo "APP_KEY chưa tồn tại. Đang tạo APP_KEY mới..."
   php artisan key:generate --ansi
+fi
+
+# Tạo symbolic link cho storage nếu chưa có
+if [ ! -L "public/storage" ]; then
+  echo "Tạo symbolic link cho storage..."
+  php artisan storage:link
+else
+  echo "Symbolic link đã tồn tại!"
 fi
 
 # Chạy migrations
