@@ -9,6 +9,7 @@ services:
     volumes:
       - ./storage:/var/www/html/storage
       - ./bootstrap/cache:/var/www/html/bootstrap/cache
+      - ./.env:/var/www/html/.env
     environment:
       APP_ENV: production
       DB_CONNECTION: mysql
@@ -31,8 +32,8 @@ services:
       MYSQL_DATABASE: tim
     volumes:
       - dbdata:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/my.cnf
       - ./laravel.sql:/docker-entrypoint-initdb.d/laravel.sql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - "3306:3306"
     networks:
