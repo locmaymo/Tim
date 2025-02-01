@@ -1,7 +1,7 @@
 services:
   app:
     # Sử dụng image đẩy lên GHCR
-    image: ghcr.io/tim:latest
+    image: ghcr.io/locmaymo/tim:latest
     container_name: app
     restart: unless-stopped
 
