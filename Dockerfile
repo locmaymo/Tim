@@ -31,13 +31,6 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
 
-# Sao chép script chờ MySQL vào container
-COPY wait-for-mysql.sh /usr/local/bin/wait-for-mysql.sh
-RUN chmod +x /usr/local/bin/wait-for-mysql.sh
-
-# Thiết lập entrypoint
-ENTRYPOINT ["wait-for-mysql.sh"]
-
 # Expose cổng 9000
 EXPOSE 9000
 
