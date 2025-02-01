@@ -21,10 +21,10 @@ services:
     # Mount các thư mục cần thiết
     # Mount file .env để artisan key:generate có thể thao tác
     volumes:
-      # - ./.env:/var/www/html/.env
+      - ./.env:/var/www/html/.env
       # - ./storage:/var/www/html/storage
-      # - ./bootstrap/cache:/var/www/html/bootstrap/cache
-      - .:/var/www/html
+      - ./bootstrap/cache:/var/www/html/bootstrap/cache
+      # - .:/var/www/html
       # Mount volume riêng này vào storage/app/public
       - storage-data:/var/www/html/storage/app/public
 
