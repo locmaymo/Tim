@@ -5,6 +5,8 @@ services:
     container_name: app
     restart: unless-stopped
 
+    command: sh -c "php artisan key:generate && php artisan storage:link && php-fpm"
+    
     # Lấy biến môi trường từ file .env (nằm ở cùng cấp với docker-compose.yaml)
     env_file:
       - .env
