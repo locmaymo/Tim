@@ -67,3 +67,4 @@ volumes:
 
 networks:
   tim:
+    driver: bridge
