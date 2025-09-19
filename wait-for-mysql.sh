@@ -39,3 +39,7 @@ php artisan migrate --force
 # Khởi động PHP-FPM
 echo "Khởi động dịch vụ PHP-FPM..."
 php-fpm
+
+# chạy queue worker
+echo "Chạy queue worker..."
+php artisan queue:work --daemon --sleep=3 --tries=3
